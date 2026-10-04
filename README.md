@@ -10,7 +10,7 @@ index.html      — page markup + SEO meta + JSON-LD (TattooParlor, FAQPage)
 styles.css      — all styling (dark + gold theme, responsive)
 script.js       — gallery, lightbox, FAQ, counters, mobile nav
 images/         — artist.webp, hero-bg.webp, clients/client-01..10.webp
-gallery/        — custom-designs / fine-line / cover-up (WebP, optimized)
+gallery/        — custom-designs / fine-line / cover-up / realism / colour-tattoos / realism / matching (WebP, optimized)
 ```
 
 ## Image notes
