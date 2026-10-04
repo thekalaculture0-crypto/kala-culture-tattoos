@@ -12,7 +12,9 @@
   addRange("custom", "Custom Design", "custom-designs", 3, 9);
   addRange("fineline", "Fine Line", "fine-line", 1, 9);
   addRange("coverup", "Cover-up", "cover-up", 1, 7);
-
+  addRange("Realism", "realism", , 1, 9);
+addRange("Matching", "matching", , 1, 5);
+  addRange("colour-tattoos", "Colour-tattoos", "colour-Tattoos", 1, 9);
   var STORIES = [
     { n: "01", img: "images/clients/client-01.webp", cat: "SLEEVE / CUSTOM", title: "Story In Ink", text: "A custom sleeve tattoo designed around the client's vision and arm flow." },
     { n: "02", img: "images/clients/client-02.webp", cat: "PORTRAIT / REALISM", title: "Made Personal", text: "Realistic detail capturing depth, contrast and true emotional significance." },
@@ -26,7 +28,7 @@
     { n: "10", img: "images/clients/client-10.webp", cat: "STATEMENT PIECE", title: "Wear Your Story", text: "Dynamic composition reflecting personal identity and cultural depth." }
   ];
 
-  var CAT_LABEL = { custom: "Custom Designs", fineline: "Fine Line", coverup: "Cover-ups" };
+  var CAT_LABEL = { custom: "Custom Designs", fineline: "Fine Line", coverup: "Cover-ups" , realism:  "Realism" , matching: "Matching-Tattoos" , colour: "Colour Tattoos" };
 
   /* ---------- Gallery render + filter ---------- */
   var grid = document.getElementById("galleryGrid");
@@ -71,7 +73,7 @@
   // Specialty cards jump to gallery with filter applied
   document.querySelectorAll(".spec-card").forEach(function (card) {
     card.addEventListener("click", function () {
-      var map = { custom: "custom", fineline: "fineline", coverup: "coverup", realism: "all", sleeve: "all", matching: "all" };
+      var map = { custom: "custom", fineline: "fineline", coverup: "coverup", realism: "all", colour: "all", matching: "all" };
       var f = map[card.getAttribute("data-goto")] || "all";
       document.querySelectorAll(".tab").forEach(function (t) {
         t.classList.toggle("active", t.getAttribute("data-filter") === f);
