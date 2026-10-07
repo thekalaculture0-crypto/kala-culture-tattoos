@@ -15,3 +15,7 @@ address{font-style:normal;}
 .review-dot,.review-dot.active{width:44px;}
 .google-review-link{padding:14px 10px;margin-top:0;}
 @media (max-width:600px){.review-dots{display:none;}}
+/* --- round 3: Core Web Vitals --- */
+@media (max-width:800px){:root{--hero-image:url('images/hero-bg-mobile.webp');}}
+@media (min-width:801px){.hero.hero-split .hero-kicker{min-height:2.3em !important;}}
+@media (min-width:801px){.hero.hero-split .hero-kicker .rotating-word{display:block;}}
