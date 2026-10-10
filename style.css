@@ -83,3 +83,19 @@ address{font-style:normal;}
 .plain-list li strong{color:#111}
 .plain-list li a{color:#111;text-decoration:none}
 .plain-list li a:hover strong{text-decoration:underline}
+/* --- round 5: blog, homepage content sections --- */
+.post{max-width:760px;margin:0 auto;text-align:left;}
+.post-meta{font-size:13px;color:#8a8a84;margin:0 0 26px;letter-spacing:.02em;}
+.post h2{font-family:'Playfair Display','Inter',serif;font-size:clamp(23px,3.2vw,30px);line-height:1.25;margin:40px 0 14px;color:#171717;text-align:left;}
+.post p,.post li{font-size:17px;line-height:1.85;color:#444;}
+.post p{margin:0 0 16px;}
+.post ul,.post ol{margin:0 0 20px;padding-left:22px;}
+.post li{margin-bottom:8px;}
+.post a{color:#171717;text-decoration:underline;text-decoration-color:#d4af37;text-underline-offset:3px;}
+.post a:hover{color:#8a6d1f;}
+.post .callout{background:#faf8f1;border-left:3px solid #d4af37;border-radius:6px;padding:16px 20px;margin:32px 0 8px;}
+.post .callout p{margin:0;}
+.blog-card .date{display:block;font-size:12px;color:#8a8a84;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+.blog-grid{margin-top:8px;}
+@media (max-width:800px){.blog-grid{grid-template-columns:1fr;}}
+.post-cta .info-lead{margin-bottom:8px;}
