@@ -123,7 +123,7 @@
     if (clone) { b.setAttribute('aria-hidden', 'true'); b.tabIndex = -1; }
     else b.setAttribute('aria-label', 'Open photo: ' + it.label);
     var im = new Image();
-    im.alt = clone ? '' : it.alt;
+    im.alt = it.alt;
     im.loading = 'lazy';
     im.decoding = 'async';
     im.src = it.url;
