@@ -5,7 +5,7 @@
     1. Open your GitHub repo and go into the "gallery" folder.
     2. Click Add file > Upload files and drop the new photos in.
        Use .webp or .jpg, ideally under 200 KB each.
-    3. Commit. The photos appear in the gallery automatically.
+    3. Commit. The photos appear in the gallery automatically after the site redeploys (about a minute).
        (A visitor who has already opened the site may take up to
        30 minutes to see them, then it refreshes by itself.)
 
@@ -22,7 +22,7 @@
 
   var CFG = {
     // The site reads its own photo list from GitHub. Add every repo that holds the live site (tried in order).
-    repos: [['thekalaculturetattoos-hash', 'index.html'], ['thekalaculture0-crypto', 'kala-culture-tattoos']],
+    repos: [['thekalaculture0-crypto', 'kala-culture-tattoos']],
     branches: ['main', 'master'],
     folders: ['gallery/', 'images/clients/'],
     maxPhotos: 60,
@@ -103,6 +103,22 @@
       return paths.length ? paths : fetchTree(i + 1);
     }, function () { return fetchTree(i + 1); });
   }
+  // The photo list is written at deploy time to /gallery/manifest.json (see scripts/make-gallery-manifest.js).
+  // GitHub is only asked if that file cannot be read.
+  function fetchManifest() {
+    if (!window.fetch) return Promise.reject(new Error('no fetch'));
+    return fetch('/gallery/manifest.json').then(function (r) {
+      if (!r.ok) throw new Error('no manifest');
+      return r.json();
+    }).then(function (j) {
+      var paths = (j && j.paths ? j.paths : []).filter(function (p) {
+        return IMG_RE.test(p) && CFG.folders.some(function (d) { return p.indexOf(d) === 0; });
+      });
+      if (!paths.length) throw new Error('empty manifest');
+      return paths;
+    });
+  }
+  function loadList() { return fetchManifest().catch(function () { return fetchTree(); }); }
   function timeout(ms) { return new Promise(function (_, rej) { setTimeout(rej, ms); }); }
 
   /* ---------------------------------------------------------- state */
@@ -337,7 +353,7 @@
   if (cached) setItems(toItems(cached.paths));
 
   if (!fresh) {
-    var req = fetchTree().then(function (paths) {
+    var req = loadList().then(function (paths) {
       if (paths.length) { writeCache(paths); return paths; }
       throw new Error('empty');
     });
