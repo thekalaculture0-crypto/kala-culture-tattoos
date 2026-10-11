@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en-IN"> 
  <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M3HG5CMCN2"></script>
+<!-- Google tag (gtag.js): loads on first interaction (or 6 s after load) to keep the page fast -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-M3HG5CMCN2');
+  (function () {
+    var started = false;
+    function loadGA() {
+      if (started) return; started = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-M3HG5CMCN2';
+      document.head.appendChild(s);
+    }
+    ['wheel', 'pointerdown', 'keydown', 'touchstart'].forEach(function (e) {
+      window.addEventListener(e, loadGA, { once: true, passive: true });
+    });
+    window.addEventListener('load', function () { setTimeout(loadGA, 6000); });
+  })();
+</script>
+<script>
+/* Anchor links (#contact etc.): turn off the skip-offscreen-rendering optimisation so the page scrolls to the exact spot */
+(function () {
+  var d = document.documentElement;
+  function off() { d.classList.add('no-cv'); }
+  if (location.hash) off();
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="#"]');
+    if (a) off();
+  }, true);
+  window.addEventListener('hashchange', off);
+})();
 </script>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tattoo Artist &amp; Studio in Vadodara | Kala Culture Tattoos</title>
@@ -43,7 +68,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
-    <link rel="stylesheet" href="/style.css?v=6">
+    <link rel="stylesheet" href="/style.css?v=7">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -574,6 +599,7 @@
     </div>
 
     <!-- Hero / Banner -->
+    <main id="main">
     <section id="home" class="hero hero-split">
         <div class="hero-content">
             <div class="hero-kicker">Tattoos that reflect your <span class="rotating-word" id="rotatingWord">Culture</span></div>
@@ -909,6 +935,8 @@ The studio atmosphere was hygienic, professional, and very comfortable. The arti
             </div>
         </div>
     </section>
+    </main>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -956,7 +984,7 @@ The studio atmosphere was hygienic, professional, and very comfortable. The arti
 
     <div id="cursorHalo" aria-hidden="true"></div>
     <script src="/main.js?v=4" defer></script>
-    <script src="/gallery.js?v=1" defer></script>
+    <script src="/gallery.js?v=2" defer></script>
 <style>
 .kc-modal{position:fixed;inset:0;z-index:2500;display:none;background:rgba(10,10,10,.94);overflow-y:auto;-webkit-overflow-scrolling:touch}
 .kc-modal.open{display:block;animation:kcFade .3s ease}
@@ -982,7 +1010,7 @@ The studio atmosphere was hygienic, professional, and very comfortable. The arti
 </style>
 <script>
 (function(){
-  var CFG={repos:[['thekalaculturetattoos-hash','index.html'],['thekalaculture0-crypto','kala-culture-tattoos']],branches:['main','master']};
+  var CFG={repos:[['thekalaculture0-crypto','kala-culture-tattoos']],branches:['main','master']};
   var KEYS={custom:'custom',realism:'realism',fine:'fine',colour:'colo',cover:'cover',matching:'matching'};
   var IMG=/\.(webp|jpe?g|png|avif|gif)$/i;
   function seq(f,a,b,pre){var r=[];for(var i=a;i<=b;i++)r.push(f+'/'+(pre?pre+(i<10?'0':''):'')+i+'.webp');return r;}
@@ -999,11 +1027,12 @@ The studio atmosphere was hygienic, professional, and very comfortable. The arti
       return p.length?p:tree(i+1);
     },function(){return tree(i+1);});
   }
+  function manifest(){if(!window.fetch)return Promise.reject();return fetch('/gallery/manifest.json').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){var p=(j&&j.paths?j.paths:[]).filter(function(x){return IMG.test(x)&&x.indexOf('gallery/')===0;});if(!p.length)throw 0;return p;});}
   function getPaths(){
     if(paths)return Promise.resolve(paths);
     if(!loading){
       var cached=fromCache();
-      loading=cached?Promise.resolve(cached):tree(0).catch(function(){return FALLBACK;});
+      loading=cached?Promise.resolve(cached):manifest().catch(function(){return tree(0);}).catch(function(){return FALLBACK;});
       loading=loading.then(function(p){paths=p;return p;});
     }
     return loading;
