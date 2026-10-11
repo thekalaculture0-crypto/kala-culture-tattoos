@@ -99,3 +99,19 @@ address{font-style:normal;}
 .blog-grid{margin-top:8px;}
 @media (max-width:800px){.blog-grid{grid-template-columns:1fr;}}
 .post-cta .info-lead{margin-bottom:8px;}
+/* --- round 6: contrast fixes + cheaper rendering --- */
+.tg-eyebrow,.services-subtitle,.artist-eyebrow,.review-bridge,.story-scroll-hint,.process-heading>span,.school-eyebrow,.school-highlight>span{color:#595959 !important;}
+.reviewer-loc{color:#666 !important;}
+.blog-card .date,.post-meta{color:#6b6b66;}
+#services,#why-us,#how-it-works,#price-glance,#areas,#hygiene,#artist,#home-faq,#home-guides,#contact,footer{content-visibility:auto;}
+#services{contain-intrinsic-size:auto 1118px;}#why-us{contain-intrinsic-size:auto 785px;}#how-it-works{contain-intrinsic-size:auto 592px;}
+#price-glance{contain-intrinsic-size:auto 433px;}#areas{contain-intrinsic-size:auto 482px;}#hygiene{contain-intrinsic-size:auto 793px;}
+#artist{contain-intrinsic-size:auto 853px;}#home-faq{contain-intrinsic-size:auto 849px;}#home-guides{contain-intrinsic-size:auto 511px;}
+#contact{contain-intrinsic-size:auto 1059px;}footer{contain-intrinsic-size:auto 642px;}
+.no-cv #services,.no-cv #why-us,.no-cv #how-it-works,.no-cv #price-glance,.no-cv #areas,.no-cv #hygiene,.no-cv #artist,.no-cv #home-faq,.no-cv #home-guides,.no-cv #contact,.no-cv footer{content-visibility:visible !important;}
+@media (max-width:800px){
+#services{contain-intrinsic-size:auto 2397px;}#why-us{contain-intrinsic-size:auto 1471px;}#how-it-works{contain-intrinsic-size:auto 887px;}
+#price-glance{contain-intrinsic-size:auto 577px;}#areas{contain-intrinsic-size:auto 543px;}#hygiene{contain-intrinsic-size:auto 1235px;}
+#artist{contain-intrinsic-size:auto 1067px;}#home-faq{contain-intrinsic-size:auto 751px;}#home-guides{contain-intrinsic-size:auto 780px;}
+#contact{contain-intrinsic-size:auto 1520px;}footer{contain-intrinsic-size:auto 1434px;}
+}
