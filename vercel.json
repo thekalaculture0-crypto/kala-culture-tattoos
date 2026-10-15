@@ -48,6 +48,12 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "/tattoo-artist-in-vadodara"
+    }
+  ],
   "headers": [
     {
       "source": "/main.js",
