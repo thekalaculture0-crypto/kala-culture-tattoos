@@ -81,6 +81,14 @@
           "value": "public, max-age=604800"
         }
       ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    },
+    {
+      "source": "/gallery/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
     }
   ],
   "buildCommand": "node scripts/make-gallery-manifest.js",
