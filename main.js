@@ -24,3 +24,27 @@
     if(ev.target && ev.target.id==="enquiryForm") send("enquiry_submit", ev.target);
   }, true);
 })();
+
+/* Google Ads conversion tracking. Fill in ADS_ID and the three labels from Google Ads (Goals > Conversions > your action > Tag setup > Use the event snippet). Nothing fires until real values are added. */
+;(function(){
+  var ADS_ID = "AW-17881028776";
+  var LABELS = { call: "EaRMCO69-p8dEKixq85C", whatsapp: "3I_UCIbz-Z8dEKixq85C", form: "4q9wCIH2-p8dEKixq85C" };
+  if(typeof gtag!=="function" || ADS_ID.indexOf("X")>-1) return;
+  gtag("config", ADS_ID);
+  function conv(key){
+    try{
+      var l = LABELS[key];
+      if(l && l.indexOf("_LABEL")<0) gtag("event", "conversion", { send_to: ADS_ID + "/" + l });
+    }catch(e){}
+  }
+  document.addEventListener("click", function(ev){
+    var a = ev.target && ev.target.closest ? ev.target.closest("a[href]") : null;
+    if(!a) return;
+    var h = (a.getAttribute("href")||"").toLowerCase();
+    if(h.indexOf("tel:")===0) conv("call");
+    else if(h.indexOf("wa.me/")>-1 || h.indexOf("api.whatsapp.com")>-1) conv("whatsapp");
+  }, true);
+  document.addEventListener("submit", function(ev){
+    if(ev.target && ev.target.id==="enquiryForm") conv("form");
+  }, true);
+})();
