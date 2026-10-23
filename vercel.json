@@ -3,6 +3,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.thekalaculturetattoos.in"
+        }
+      ],
+      "destination": "https://thekalaculturetattoos.in/$1",
+      "permanent": true
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "permanent": true
@@ -48,13 +59,6 @@
       "permanent": true
     }
   ],
-  "redirects": [
-    {
-      "source": "/about",
-      "destination": "/tattoo-artist-in-vadodara",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/main.js",
@@ -85,11 +89,21 @@
     },
     {
       "source": "/images/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
     },
     {
       "source": "/gallery/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
     }
   ],
   "buildCommand": "node scripts/make-gallery-manifest.js",
