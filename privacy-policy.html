@@ -77,6 +77,12 @@
  "dateModified": "2026-10-15"
 }
 </script>
+<script>
+/* Microsoft Clarity (loads after the first tap/scroll or 8 seconds, so it never slows the first paint) */
+(function(){var started=false;function go(){if(started)return;started=true;
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","z36opy417t");}
+["pointerdown","keydown","scroll","touchstart"].forEach(function(e){addEventListener(e,go,{once:true,passive:true})});setTimeout(go,8000);})();
+</script>
 </head>
 <body>
 <!-- Floating Buttons -->
@@ -133,7 +139,7 @@
     <div class="page-hero">
         <span class="eyebrow">Legal</span>
         <h1>Privacy Policy</h1>
-        <p class="lead">Last updated: 15 October 2026</p>
+        <p class="lead">Last updated: 23 October 2026</p>
         <p class="crumbs"><a href="/">Home</a> &nbsp;/&nbsp; Privacy Policy</p>
     </div>
     <section class="info-section">
@@ -144,6 +150,7 @@
         <h2 class="section-title reveal">What information we collect</h2>
         <p class="info-lead reveal"><strong>Messages you send us.</strong> The enquiry form on this site does not store anything on our server. It opens WhatsApp with your message filled in, and what you send reaches us through WhatsApp, a phone call or email. We use those details only to reply to you, give a quote and book your session.</p>
         <p class="info-lead reveal"><strong>Visit statistics.</strong> We use Google Analytics to see how many people visit the site, which pages they read and roughly where they come from. Google Analytics uses cookies and collects information such as your browser, device and approximate location. It does not tell us who you are.</p>
+        <p class="info-lead reveal">We also use Microsoft Clarity, a free tool that shows us how people use our pages, such as where they tap, scroll and get stuck. It may set cookies and collects usage data like your device, browser and approximate location. Microsoft processes this data under its <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">privacy statement</a>.</p>
     </section>
     <section class="info-section">
         <h2 class="section-title reveal">How we use it</h2>
